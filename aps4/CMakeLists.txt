@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(aps4_221)
+project(aps4_222)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
 # add_definitions(-std=c++11)
