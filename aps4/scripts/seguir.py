@@ -21,7 +21,7 @@ def scaneou(dado):
 
 if __name__=="__main__":
 
-	rospy.init_node("indeciso")
+	rospy.init_node("seguir")
 
 	velocidade_saida = rospy.Publisher("/cmd_vel", Twist, queue_size = 3 )
 	recebe_scan = rospy.Subscriber("/scan", LaserScan, scaneou)

@@ -59,27 +59,7 @@ if __name__=="__main__":
 
 	# topico_imagem = "/kamera"
 	topico_imagem = "camera/image/compressed" # Use para robo virtual
-	# topico_imagem = "/raspicam/image_raw/compressed" # Use para robo real
 	
-	# Para renomear a *webcam*
-	#   Primeiro instale o suporte https://github.com/Insper/robot19/blob/master/guides/debugar_sem_robo_opencv_melodic.md
-	#
-	#	Depois faça:
-	#	
-	#	rosrun cv_camera cv_camera_node
-	#
-	# 	rosrun topic_tools relay  /cv_camera/image_raw/compressed /kamera
-	#
-	# 
-	# Para renomear a câmera simulada do Gazebo
-	# 
-	# 	rosrun topic_tools relay  /camera/rgb/image_raw/compressed /kamera
-	# 
-	# Para renomear a câmera da Raspberry
-	# 
-	# 	rosrun topic_tools relay /raspicam_node/image/compressed /kamera
-	# 
-
 	recebedor = rospy.Subscriber(topico_imagem, CompressedImage, roda_todo_frame, queue_size=4, buff_size = 2**24)
 	print("Usando ", topico_imagem)
 
