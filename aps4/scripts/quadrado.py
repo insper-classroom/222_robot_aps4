@@ -19,15 +19,17 @@ class Control():
         self.cmd_vel_pub = rospy.Publisher("cmd_vel", Twist, queue_size=3)
         self.duration = 5.0
 
-        self.cmd_vel_pub.publish(Twist(Vector3(0,0,0), Vector3(0,0,0)))
+        self.cmd_vel_pub.publish(Twist())
     
-    def forward(self, distance: float = 0.5):
-        vel = Twist(Vector3(distance / self.duration,0,0), Vector3(0,0,0))
+    def forward(self, distance: float = 0.5, vel = Twist()):
+        print("forward")
+        vel.linear.x = distance / self.duration
         self.cmd_vel_pub.publish(vel)
         rospy.sleep(self.duration)
 
-    def rotate(self, angle: float = np.pi/2):
-        vel = Twist(Vector3(0,0,0), Vector3(0,0,angle / self.duration))
+    def rotate(self, angle: float = np.pi/2, vel = Twist()):
+        print("rotate")
+        vel.angular.z = angle / self.duration
         self.cmd_vel_pub.publish(vel)
         rospy.sleep(self.duration)
 
@@ -35,22 +37,16 @@ class Control():
         '''
         This function is called every time the robot receives a new image.
         '''
-        
-        print("forward")
         self.forward(0.5)
-        print("rotate")
         self.rotate(np.pi/2)
-        print("forward")
+
         self.forward(0.5)
-        print("rotate")
         self.rotate(np.pi/2)
-        print("forward")
+
         self.forward(0.5)
-        print("rotate")
         self.rotate(np.pi/2)
-        print("forward")
+
         self.forward(0.5)
-        print("rotate")
         self.rotate(np.pi/2)
         
 def main():
