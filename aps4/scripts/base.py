@@ -33,6 +33,6 @@ if __name__=="__main__":
     main()
 
 """
-roslaunch my_simulation novas_formas.launch
+roslaunch my_simulation caixas.launch
 """
 
